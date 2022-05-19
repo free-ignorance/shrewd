@@ -34,7 +34,15 @@ Enjoy this emoji rendering of a lunar month cycle
 (lunar age)
 ```
 
+### Example Usage
 
+Basic usage
+
+```
+curl https://
+```
+
+## Local Development
 
 ### Installation
 
@@ -42,9 +50,3 @@ Enjoy this emoji rendering of a lunar month cycle
 npm install
 ```
 
-### Example Usage
-
-Basic usage
-```
-npm run start
-```

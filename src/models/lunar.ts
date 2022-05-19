@@ -7,15 +7,20 @@ const LUNAR_BUFFER = 0.55;
 
 interface IPhaseName {
   en: string;
-  de: string;
-  es: string;
-  fr: string;
-  ja: string;
-  zh: string;
+  de?: string;
+  es?: string;
+  fr?: string;
+  ja?: string;
+  zh?: string;
 }
 
 interface IPhaseDescription {
   en: string;
+	de?: string;
+  es?: string;
+  fr?: string;
+  ja?: string;
+  zh?: string;
 }
 
 interface IPhaseRange {
@@ -28,6 +33,12 @@ interface IPhase {
   name: IPhaseName;
   description: IPhaseDescription;
   range: IPhaseRange;
+}
+
+interface IExturnalPhase {
+	symbol: string;
+  name: string;
+  description: string;
 }
 
 interface ILunarPhases {
@@ -246,7 +257,7 @@ function normalize(value: number): number {
  * @param date {Date} The date to get the lunar phase for.
  * @returns IPhase The lunar phase for the given date.
  */
-function getLunarPhase(date: Date = new Date()): IPhase {
+function createLunarPhase(date: Date = new Date()): IPhase {
   const age = getLunarAge(date);
   if (age < 1) {
     return lunarPhases.new;
@@ -277,7 +288,20 @@ function getLunarPhase(date: Date = new Date()): IPhase {
   return lunarPhases.new;
 }
 
-module.exports = {
+function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
+	const phase = createLunarPhase(date);
+
+	// TODO: switch language on lang usage
+	const responsePhase: IExturnalPhase = {
+		name: phase.name.en,
+		description: phase.description.en,
+		symbol: phase.symbol,
+	};
+
+	return responsePhase;
+}
+
+export {
   lunarPhases,
   rareLunarPhases,
   getLunarAge,
@@ -285,4 +309,6 @@ module.exports = {
   getJulianDate,
   normalize,
   getLunarPhase,
+	createLunarPhase,
+	IExturnalPhase
 };
