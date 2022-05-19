@@ -1,6 +1,50 @@
 # shrewd
+=========
 
-an astute shrewd knows the moon's secrets
+[![Issues](https://img.shields.io/github/issues/free-ignorance/shrewd.svg)](https://github.com/free-ignorance/shrewd/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/free-ignorance/shrewd/blob/main/LICENSE)
+![Known Vulnerabilities](https://snyk.io/test/github/free-ignorance/shrewd/badge.svg)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/free-ignorance/shrewd.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/free-ignorance/shrewd/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/free-ignorance/shrewd.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/free-ignorance/shrewd/context:javascript)
 
-This api does the current moon phase, its intent is to be localized into multiple languages, and return a symbol for universal understanding.
 
+## Description
+
+  "an astute shrewd knows the moon's secrets"
+
+This RESTful API returns a json object with the current moon phase
+
+its intent is to be localized into multiple languages,
+
+it also returns an emoji symbol for universal understanding.
+
+
+## Methodology
+
+To get the Current moon cycle . . .
+
+Because we know the moon phase at the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time) (00:00:00 UTC on 1 January 1970) we can calculate the current place in the current cycle from that point. We do this by converting the Gregorian Calendar date to a [Julian Date](https://en.wikipedia.org/wiki/Julian_day), which will aproximately tell us a lunar cycle, or lunar month.
+
+Enjoy this emoji rendering of a lunar month cycle
+
+```
+				✩        ⁂         ⚝          ❂
+	🌑   🌒   🌓   🌔   🌕   🌖   🌗   🌘   🌑
+	0         7         14        21        29.530588853
+(lunar age)
+```
+
+
+
+### Installation
+
+```
+npm install
+```
+
+### Example Usage
+
+Basic usage
+```
+npm run start
+```
