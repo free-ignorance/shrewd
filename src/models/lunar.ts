@@ -16,7 +16,7 @@ interface IPhaseName {
 
 interface IPhaseDescription {
   en: string;
-	de?: string;
+  de?: string;
   es?: string;
   fr?: string;
   ja?: string;
@@ -36,7 +36,7 @@ interface IPhase {
 }
 
 interface IExturnalPhase {
-	symbol: string;
+  symbol: string;
   name: string;
   description: string;
 }
@@ -288,17 +288,17 @@ function createLunarPhase(date: Date = new Date()): IPhase {
   return lunarPhases.new;
 }
 
-function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
-	const phase = createLunarPhase(date);
+function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
+  const phase = createLunarPhase(date);
 
-	// TODO: switch language on lang usage
-	const responsePhase: IExturnalPhase = {
-		name: phase.name.en,
-		description: phase.description.en,
-		symbol: phase.symbol,
-	};
+  // TODO: switch language on lang usage
+  const responsePhase: IExturnalPhase = {
+    name: phase.name.en,
+    description: phase.description.en,
+    symbol: phase.symbol,
+  };
 
-	return responsePhase;
+  return responsePhase;
 }
 
 export {
@@ -309,6 +309,6 @@ export {
   getJulianDate,
   normalize,
   getLunarPhase,
-	createLunarPhase,
-	IExturnalPhase
+  createLunarPhase,
+  IExturnalPhase,
 };
