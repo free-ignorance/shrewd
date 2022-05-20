@@ -16,7 +16,13 @@ shrewd
 
 This RESTful API returns a json object with the current moon phase
 
-its intent is to be localized into multiple languages,
+localized into multiple languages, currently supported are:
+* `en` - English (default if no language is specified)
+* `de` - German
+* `fr` - French
+* `es` - Spanish
+* `zh` - Chinese
+* `ja` - Japanese
 
 it also returns an emoji symbol for universal understanding.
 
@@ -30,10 +36,10 @@ Because we know the moon phase at the [Unix Epoch](https://en.wikipedia.org/wiki
 Enjoy this emoji rendering of a lunar month cycle
 
 ```
-				✩        ⁂         ⚝          ❂
-	🌑   🌒   🌓   🌔   🌕   🌖   🌗   🌘   🌑
-	0         7         14        21        29.530588853
-(lunar age)
+      ✩        ⁂         ⚝          ❂
+  🌑   🌒   🌓   🌔   🌕   🌖   🌗   🌘   🌑           (phase)
+  0         7         14        21        29.530588853  (lunar age)
+
 ```
 
 ### Example Usage
