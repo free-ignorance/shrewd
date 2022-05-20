@@ -1,6 +1,9 @@
 shrewd
 =========
 
+#### "an astute shrewd knows the moon's secrets"
+
+
 [![Issues](https://img.shields.io/github/issues/free-ignorance/shrewd.svg)](https://github.com/free-ignorance/shrewd/issues)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/free-ignorance/shrewd/blob/main/LICENSE)
 ![Known Vulnerabilities](https://snyk.io/test/github/free-ignorance/shrewd/badge.svg)
@@ -12,7 +15,6 @@ shrewd
 
 ## Description
 
-  "an astute shrewd knows the moon's secrets"
 
 This RESTful API returns a json object with the current moon phase
 
