@@ -48,8 +48,34 @@ Enjoy this emoji rendering of a lunar month cycle
 
 Basic usage
 
+```bash
+curl https://sage.af/api/shrewd/
 ```
-curl https://
+
+Response 
+
+```json
+{
+  "name": "New Moon",
+  "description": "The Moon is new and full of energy.",
+  "symbol": "🌑",
+}
+```
+
+Recieve the Response in a different language using the `lang` query param. 
+
+```bash
+  curl https://sage.af/api/shrewd/?lang="es"
+```
+
+Response
+
+```json
+{
+  "name": "Luna nueva",
+  "description": "La luna es nueva y llena de energía.",
+  "symbol": "🌑",
+}
 ```
 
 ## Local Development
