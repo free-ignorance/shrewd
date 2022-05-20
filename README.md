@@ -24,7 +24,7 @@ Basic usage
 curl https://sage.af/api/shrewd/
 ```
 
-Response 
+Response
 
 ```json
 {
@@ -34,7 +34,7 @@ Response
 }
 ```
 
-Recieve the Response in a different language using the `lang` query param. 
+Recieve the Response in a different language using the `lang` query param.
 
 ```bash
   curl https://sage.af/api/shrewd/?lang="es"
