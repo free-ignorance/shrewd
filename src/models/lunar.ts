@@ -36,8 +36,8 @@ interface IPhase {
 
 interface IExturnalPhase {
   symbol: string;
-  name: string;
-  description: string;
+  name?: string;
+  description?: string;
 }
 
 interface ILunarPhases {
@@ -68,6 +68,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌑",
     description: {
       en: "The Moon is new and full of energy.",
+      es: `La luna es nueva y llena de energía.`,
     },
   },
   waxingCrescent: {
@@ -86,6 +87,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌒",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      es: `La luna está creciendo y la energía está aumentando.`,
     },
   },
   firstQuarter: {
@@ -104,6 +106,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌓",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      es: "La luna está creciendo y la energía está aumentando.",
     },
   },
   waxingGibbous: {
@@ -122,6 +125,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌔",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      es: "La luna está creciendo y la energía está aumentando.",
     },
   },
   full: {
@@ -158,6 +162,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌖",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      es: "La luna está creciendo y la energía está aumentando.",
     },
   },
   lastQuarter: {
@@ -176,6 +181,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌗",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      es: "La luna está creciendo y la energía está aumentando.",
     },
   },
   waningCrescent: {
@@ -194,6 +200,7 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌘",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      es: "La luna está creciendo y la energía está aumentando.",
     },
   },
 };
@@ -211,6 +218,7 @@ const rareLunarPhases = {
     symbol: "🔴",
     description: {
       en: "The Moon is blood-red and full of energy.",
+      es: "La luna es sangrienta y llena de energía.",
     },
   },
 };
@@ -295,15 +303,21 @@ function createLunarPhase(date: Date = new Date()): IPhase {
  */
 function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
   const phase = createLunarPhase(date);
-
-  // TODO: switch language on lang usage
-  let responsePhase: IExturnalPhase = {
-    name: phase.name.en,
-    description: phase.description.en,
-    symbol: phase.symbol,
-  };
-
-  return responsePhase;
+  switch(lang) {
+    case "es":
+      return {
+        name: phase.name.es,
+        symbol: phase.symbol,
+        description: phase.description.es,
+      };
+    case "en":
+    default:
+      return {
+        name: phase.name.en,
+        symbol: phase.symbol,
+        description: phase.description.en,
+      };
+    }
 }
 
 export {
