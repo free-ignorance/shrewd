@@ -2,8 +2,7 @@ const LUNAR_MONTH = 29.530588853;
 const LUNAR_WEEK = 7.38264721325;
 const JULIAN_DATE = 2451550.1;
 const JULIAN_UNIX_TIME = 2440587.5;
-const LUNAR_PHASE_RANGE_ = 5.53699;
-const LUNAR_BUFFER = 0.55;
+const LUNAR_BUFFER = 0.85;
 
 interface IPhaseName {
   en: string;
@@ -37,8 +36,8 @@ interface IPhase {
 
 interface IExturnalPhase {
   symbol: string;
-  name: string;
-  description: string;
+  name?: string;
+  description?: string;
 }
 
 interface ILunarPhases {
@@ -69,6 +68,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌑",
     description: {
       en: "The Moon is new and full of energy.",
+      de: "Die Mond ist neu und voll mit Energie.",
+      es: `La luna es nueva y llena de energía.`,
+      fr: `La lune est nueve et pleine d'énergie.`,
+      ja: `月は新しいです。`,
+      zh: `月是新的，充滿能量。`,
     },
   },
   waxingCrescent: {
@@ -77,7 +81,7 @@ const lunarPhases: ILunarPhases = {
       de: "Zunehmende Sichelmondphase",
       es: "Luna creciente",
       fr: "Lune crépusculaire",
-      ja: "薄月",
+      ja: "上弦月",
       zh: "薄月",
     },
     range: {
@@ -87,6 +91,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌒",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      de: "Die Mond ist zunehmend und die Energie wird erhöht.",
+      es: `La luna está creciendo y la energía está aumentando.`,
+      fr: `La lune est en train de se crépusculer et l'énergie est en train d'augmenter.`,
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
   firstQuarter: {
@@ -99,12 +108,17 @@ const lunarPhases: ILunarPhases = {
       zh: "初月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 6.83264721325,
+      end: 7.93264721325,
     },
     symbol: "🌓",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      de: "Die Mond ist zunehmend und die Energie wird erhöht.",
+      es: "La luna está creciendo y la energía está aumentando.",
+      fr: "La lune est en train de se crépusculer et l'énergie est en train d'augmenter.",
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
   waxingGibbous: {
@@ -123,6 +137,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌔",
     description: {
       en: "The Moon is waxing and the energy is increasing.",
+      de: "Die Mond ist zunehmend und die Energie wird erhöht.",
+      es: "La luna está creciendo y la energía está aumentando.",
+      fr: "La lune est en train de se crépusculer et l'énergie est en train d'augmenter.",
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
   full: {
@@ -141,6 +160,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌕",
     description: {
       en: "The Moon is full.",
+      de: "Die Mond ist voll.",
+      es: "La luna está llena.",
+      fr: "La lune est pleine.",
+      ja: `月は満ちました。`,
+      zh: `月是滿的。`,
     },
   },
   waningGibbous: {
@@ -159,6 +183,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌖",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      de: "Die Mond ist abnehmend und die Energie wird verringert.",
+      es: "La luna está creciendo y la energía está aumentando.",
+      fr: "La lune est en train de se crépusculer et l'énergie est en train d'augmenter.",
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
   lastQuarter: {
@@ -177,6 +206,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌗",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      de: "Die Mond ist abnehmend und die Energie wird verringert.",
+      es: "La luna está creciendo y la energía está aumentando.",
+      fr: "La lune est en train de se crépusculer et l'énergie est en train d'augmenter.",
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
   waningCrescent: {
@@ -185,7 +219,7 @@ const lunarPhases: ILunarPhases = {
       de: "Abnehmende Sichelmondphase",
       es: "Luna creciente",
       fr: "Lune crépusculaire",
-      ja: "薄月",
+      ja: "下弦月",
       zh: "薄月",
     },
     range: {
@@ -195,6 +229,11 @@ const lunarPhases: ILunarPhases = {
     symbol: "🌘",
     description: {
       en: "The Moon is waning and the energy is decreasing.",
+      de: "Die Mond ist abnehmend und die Energie wird verringert.",
+      es: "La luna está creciendo y la energía está aumentando.",
+      fr: "La lune est en train de se crépusculer et l'énergie est en train d'augmenter.",
+      ja: `月は薄くなっています。`,
+      zh: `月是薄的，能量增加。`,
     },
   },
 };
@@ -212,6 +251,11 @@ const rareLunarPhases = {
     symbol: "🔴",
     description: {
       en: "The Moon is blood-red and full of energy.",
+      de: "Die Mond ist blutrot und voll mit Energie.",
+      es: "La luna es sangrienta y llena de energía.",
+      fr: "La lune est rouge sanglante et pleine d'énergie.",
+      ja: `月は血色で満ちました。`,
+      zh: `月是血色的，能量滿滿。`,
     },
   },
 };
@@ -288,17 +332,52 @@ function createLunarPhase(date: Date = new Date()): IPhase {
   return lunarPhases.new;
 }
 
+/**
+ * @param date {Date} The date to get the lunar phase for.
+ * @param lang {String} The language to get the name of the phase in.
+ * @returns {IExturnalPhase} The lunar phase for the given date.
+ */
 function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
   const phase = createLunarPhase(date);
-
-  // TODO: switch language on lang usage
-  const responsePhase: IExturnalPhase = {
-    name: phase.name.en,
-    description: phase.description.en,
-    symbol: phase.symbol,
-  };
-
-  return responsePhase;
+  switch (lang) {
+    case "de":
+      return {
+        name: phase.name.de,
+        symbol: phase.symbol,
+        description: phase.description.de,
+      };
+    case "es":
+      return {
+        name: phase.name.es,
+        symbol: phase.symbol,
+        description: phase.description.es,
+      };
+    case "fr":
+      return {
+        name: phase.name.fr,
+        symbol: phase.symbol,
+        description: phase.description.fr,
+      };
+    case "ja":
+      return {
+        name: phase.name.ja,
+        symbol: phase.symbol,
+        description: phase.description.ja,
+      };
+    case "zh":
+      return {
+        name: phase.name.zh,
+        symbol: phase.symbol,
+        description: phase.description.zh,
+      };
+    case "en":
+    default:
+      return {
+        name: phase.name.en,
+        symbol: phase.symbol,
+        description: phase.description.en,
+      };
+  }
 }
 
 export {
