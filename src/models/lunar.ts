@@ -2,8 +2,7 @@ const LUNAR_MONTH = 29.530588853;
 const LUNAR_WEEK = 7.38264721325;
 const JULIAN_DATE = 2451550.1;
 const JULIAN_UNIX_TIME = 2440587.5;
-const LUNAR_PHASE_RANGE_ = 5.53699;
-const LUNAR_BUFFER = 0.55;
+const LUNAR_BUFFER = 0.85;
 
 interface IPhaseName {
   en: string;
@@ -99,8 +98,8 @@ const lunarPhases: ILunarPhases = {
       zh: "初月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 6.83264721325,
+      end: 7.93264721325,
     },
     symbol: "🌓",
     description: {
@@ -259,6 +258,7 @@ function normalize(value: number): number {
  */
 function createLunarPhase(date: Date = new Date()): IPhase {
   const age = getLunarAge(date);
+  console.log(age);
   if (age < 1) {
     return lunarPhases.new;
   } else if (age < LUNAR_WEEK - LUNAR_BUFFER) {
@@ -288,11 +288,16 @@ function createLunarPhase(date: Date = new Date()): IPhase {
   return lunarPhases.new;
 }
 
-function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
+/**
+ * @param date {Date} The date to get the lunar phase for.
+ * @param lang {String} The language to get the name of the phase in.
+ * @returns {IExturnalPhase} The lunar phase for the given date.
+ */
+function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
   const phase = createLunarPhase(date);
 
   // TODO: switch language on lang usage
-  const responsePhase: IExturnalPhase = {
+  let responsePhase: IExturnalPhase = {
     name: phase.name.en,
     description: phase.description.en,
     symbol: phase.symbol,
