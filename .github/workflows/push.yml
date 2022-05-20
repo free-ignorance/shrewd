@@ -45,10 +45,22 @@ jobs:
     steps:
       - name: Checking Out Commits Securely . . .
         uses: actions/checkout@v2
+      - name: Setup Node 14 Environment . . .
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install Dependencies . . .
+        working-directory: .
+        run: npm ci
+      - name: Build Docker Image "free-ignorance/shrewd"
+        run: docker build -t free-ignorance/shrewd .
+      - name: Run The Tests . . .
+        run: docker run free-ignorance/shrewd npm run test:coverage
       - name: Codecove Action . . .
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN}} # not required for public repos
           # fail_ci_if_error: true # optional (default = false)
-          verbose: true # optional (default = false)
+          verbose: true # optional (default = false)     
+
 
