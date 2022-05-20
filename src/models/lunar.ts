@@ -303,6 +303,7 @@ function normalize(value: number): number {
  */
 function createLunarPhase(date: Date = new Date()): IPhase {
   const age = getLunarAge(date);
+  console.log(age);
   if (age < 1) {
     return lunarPhases.new;
   } else if (age < LUNAR_WEEK - LUNAR_BUFFER) {
@@ -337,6 +338,7 @@ function createLunarPhase(date: Date = new Date()): IPhase {
  * @param lang {String} The language to get the name of the phase in.
  * @returns {IExturnalPhase} The lunar phase for the given date.
  */
+<<<<<<< HEAD
 function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
   const phase = createLunarPhase(date);
   switch (lang) {
@@ -378,6 +380,19 @@ function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
         description: phase.description.en,
       };
   }
+=======
+function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
+  const phase = createLunarPhase(date);
+
+  // TODO: switch language on lang usage
+  let responsePhase: IExturnalPhase = {
+    name: phase.name.en,
+    description: phase.description.en,
+    symbol: phase.symbol,
+  };
+
+  return responsePhase;
+>>>>>>> fix: added accurate tests and tweeks
 }
 
 export {
