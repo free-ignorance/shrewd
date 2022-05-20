@@ -37,8 +37,8 @@ Enjoy this emoji rendering of a lunar month cycle
 
 ```
       ✩        ⁂         ⚝          ❂
-  🌑   🌒   🌓   🌔   🌕   🌖   🌗   🌘   🌑           (phase)
-  0         7         14        21        29.530588853  (lunar age)
+  🌑   🌒   🌓   🌔   🌕   🌖   🌗   🌘   🌑            (phase)
+  0         7       14        21       29.530588853  (lunar age)
 
 ```
 
