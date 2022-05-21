@@ -1,8 +1,10 @@
 import express from "express";
 import { Application } from "express";
 import * as bodyParser from "body-parser";
-import { getLunarPhase } from "./models/lunar";
+import helmet from "helmet";
+import compression from "compression";
 
+import { getLunarPhase } from "./models/lunar";
 import * as pkjson from "../package.json";
 
 // Create Express server
@@ -22,9 +24,9 @@ let requestsCount = 0;
 app.get("/", (req, res) => {
   requestsCount++;
   let date = "";
-  const { lang = "en" } = req.query;
+  const lang = `${req.query.lang}`;
 
-  if (req.query.date && req.query.date.length > 0) {
+  if (req.query.date !== undefined) {
     date = `${req.query.date}`;
     const parsedDate = new Date(date);
     res.status(200).send({
