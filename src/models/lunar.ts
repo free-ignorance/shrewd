@@ -337,10 +337,6 @@ function createLunarPhase(date: Date = new Date()): IPhase {
  * @param lang {String} The language to get the name of the phase in.
  * @returns {IExturnalPhase} The lunar phase for the given date.
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feat: added express and a few other things
 function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
   const phase = createLunarPhase(date);
   switch (lang) {
@@ -382,22 +378,6 @@ function getLunarPhase(date: Date = new Date(), lang = "en"): IExturnalPhase {
         description: phase.description.en,
       };
   }
-<<<<<<< HEAD
-=======
-function getLunarPhase(date: Date = new Date(), lang:String = "en"): IExturnalPhase {
-  const phase = createLunarPhase(date);
-
-  // TODO: switch language on lang usage
-  let responsePhase: IExturnalPhase = {
-    name: phase.name.en,
-    description: phase.description.en,
-    symbol: phase.symbol,
-  };
-
-  return responsePhase;
->>>>>>> fix: added accurate tests and tweeks
-=======
->>>>>>> feat: added express and a few other things
 }
 
 export {

@@ -5,7 +5,6 @@ import helmet from "helmet";
 import compression from "compression";
 
 import { getLunarPhase } from "./models/lunar";
-import logger from "./utils/logger";
 import * as pkjson from "../package.json";
 
 // Create Express server
@@ -25,7 +24,7 @@ let requestsCount = 0;
 app.get("/", (req, res) => {
   requestsCount++;
   let date = "";
-  const lang:string = `${req.query.lang}`;
+  const lang = `${req.query.lang}`;
 
   if (req.query.date !== undefined) {
     date = `${req.query.date}`;
