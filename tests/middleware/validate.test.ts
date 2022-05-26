@@ -140,7 +140,7 @@ describe('/middleware', () => {
 
 				invalidDateMiddleware(mockRequest as Request, mockResponse as Response, nextFunction as NextFunction);
 				expect(mockResponse.status).toHaveBeenCalledWith(400);
-				expect(mockResponse.send).toHaveBeenCalledWith('Invalid date');
+				expect(mockResponse.send).toHaveBeenCalledWith('Invalid date! Valid date format is \"YYYY-MM-DD\"');
 			});
 		});
 	});
