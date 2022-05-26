@@ -1,15 +1,14 @@
 import * as express from "express";
+import { DefaultController } from "./";
 import { getLunarPhase } from "../models/lunar";
 import {
   invalidDateMiddleware,
   invalidLanguageMiddleware,
 } from "../middleware/validate";
 
-class LunarController {
-  public path = "/lunar";
-  public router = express.Router();
-
+class LunarController extends DefaultController {
   constructor() {
+    super("/lunar");
     this.initializeRoutes();
   }
 
@@ -25,9 +24,8 @@ class LunarController {
     response: express.Response
   ) => {
     // no language defaulting to english
-
-    const language = `${request.query.language}`;
-    const date = `${request.query.date}`;
+    const language = `${request.params.language}`;
+    const date = `${request.params.date}`;
 
     response.status(200).send({
       data: {

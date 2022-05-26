@@ -1,11 +1,10 @@
 import * as express from "express";
+import { DefaultController } from "./";
 import { getHealthCheck } from "../models/health";
 
-class HealthCheckController {
-  public path = "/health";
-  public router = express.Router();
-
+class HealthCheckController extends DefaultController {
   constructor() {
+    super("/health");
     this.initializeRoutes();
   }
 

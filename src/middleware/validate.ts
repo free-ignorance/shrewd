@@ -73,11 +73,15 @@ function invalidDateMiddleware(
     !request.params.date ||
     request.params.date.length === 0
   ) {
+    request.params.date = "en";
     next();
   }
 
-  if (!validateDate(request.params.date)) {
-    response.status(400).send("Invalid date");
+  const date = request.params.date;
+  if (!validateDate(date)) {
+    response
+      .status(400)
+      .send(`Invalid date! Valid date format is "YYYY-MM-DD"`);
     return;
   }
   next();
