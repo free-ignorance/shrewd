@@ -1,0 +1,1 @@
+const PLANETARY_ORBIT = 686.93;

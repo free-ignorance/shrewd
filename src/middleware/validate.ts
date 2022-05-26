@@ -1,3 +1,5 @@
+import { NextFunction, Request, Response } from "express";
+
 const VALID_LANGUAGES = ["en", "de", "es", "fr", "ja", "zh"];
 
 /**
@@ -27,24 +29,62 @@ function validateDate(date: string): boolean {
 
 /**
  *
- * @param {Request} req - Express request object
- * @param {Response} res - Express response object
- * @param next
- * @returns
+ * @param {Request} request - Express request object
+ * @param {Response} response - Express response object
+ * @param {NextFunction} next - Express next function
  */
-function invalidLanguageMiddleware(req: any, res: any, next: any): void {
-  if (!validateLanguage(req.params.language)) {
-    res.status(400).send("Invalid language");
+function invalidLanguageMiddleware(
+  request: Request,
+  response: Response,
+  next: NextFunction
+) {
+  if (
+    !request.params ||
+    !request.params.language ||
+    request.params.language.length === 0
+  ) {
+    next();
+  }
+
+  if (!validateLanguage(request.params.language)) {
+    response
+      .status(400)
+      .send(
+        `Invalid language, valid languages are "en", "de", "es", "fr", "ja", "zh"`
+      );
     return;
   }
   next();
 }
 
-function invalidDateMiddleware(req: any, res: any, next: any): void {
-  if (!validateDate(req.params.date)) {
-    res.status(400).send("Invalid date");
+/**
+ *
+ * @param {Request} request - Express request object
+ * @param {Response} response - Express response object
+ * @param {NextFunction} next - Express next function
+ */
+function invalidDateMiddleware(
+  request: Request,
+  response: Response,
+  next: NextFunction
+) {
+  if (
+    !request.params ||
+    !request.params.date ||
+    request.params.date.length === 0
+  ) {
+    next();
+  }
+
+  if (!validateDate(request.params.date)) {
+    response.status(400).send("Invalid date");
     return;
   }
   next();
 }
-export { validateLanguage, validateDate };
+export {
+  invalidDateMiddleware,
+  invalidLanguageMiddleware,
+  validateLanguage,
+  validateDate,
+};

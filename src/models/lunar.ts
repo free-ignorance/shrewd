@@ -1,5 +1,4 @@
-const LUNAR_MONTH = 29.530588853;
-const LUNAR_WEEK = 7.38264721325;
+const LUNAR_ORBIT = 29.530588853;
 const JULIAN_DATE = 2451550.1;
 const JULIAN_UNIX_TIME = 2440587.5;
 const LUNAR_BUFFER = 3.38631919932; // roughly 1 day in lunar percentages
@@ -281,12 +280,12 @@ function getJulianDate(date: Date = new Date()): number {
  */
 function getLunarAge(date = new Date()): number {
   const percent = getLunarAgePercent(date);
-  const age = percent * LUNAR_MONTH;
+  const age = percent * LUNAR_ORBIT;
   return age;
 }
 
 function getLunarAgePercent(date: Date = new Date()) {
-  return normalize((getJulianDate(date) - JULIAN_DATE) / LUNAR_MONTH);
+  return normalize((getJulianDate(date) - JULIAN_DATE) / LUNAR_ORBIT);
 }
 
 function normalize(value: number): number {
