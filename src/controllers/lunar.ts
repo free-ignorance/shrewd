@@ -1,6 +1,9 @@
 import * as express from "express";
 import { getLunarPhase } from "../models/lunar";
-import { validateDate, validateLanguage } from "../middleware/validate";
+import {
+  invalidDateMiddleware,
+  invalidLanguageMiddleware,
+} from "../middleware/validate";
 
 class LunarController {
   public path = "/lunar";
@@ -12,6 +15,9 @@ class LunarController {
 
   private initializeRoutes() {
     this.router.get(this.path, this.getLunarPhase);
+    this.router
+      .all(this.path, invalidDateMiddleware)
+      .all(this.path, invalidLanguageMiddleware);
   }
 
   private getLunarPhase = (
@@ -22,16 +28,6 @@ class LunarController {
 
     const language = `${request.query.language}`;
     const date = `${request.query.date}`;
-
-    if (!validateDate(date)) {
-      response.status(400).send("Invalid date");
-      return;
-    }
-
-    if (!validateLanguage(language)) {
-      response.status(400).send("Invalid language");
-      return;
-    }
 
     response.status(200).send({
       data: {
