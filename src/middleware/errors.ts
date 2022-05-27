@@ -40,8 +40,8 @@ class HttpException extends Error {
 
 const exceptions = [
   new HttpException(
-    401,
-    "malformed request syntax, invalid request message framing",
+    400,
+    "The request syntax is malformed or invalid",
     "BadRequest"
   ),
   new HttpException(
