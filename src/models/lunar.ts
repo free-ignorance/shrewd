@@ -1,8 +1,7 @@
-const LUNAR_MONTH = 29.530588853;
-const LUNAR_WEEK = 7.38264721325;
+const LUNAR_ORBIT = 29.530588853;
 const JULIAN_DATE = 2451550.1;
 const JULIAN_UNIX_TIME = 2440587.5;
-const LUNAR_BUFFER = 0.85;
+const LUNAR_BUFFER = 3.38631919932; // roughly 1 day in lunar percentages
 
 interface IPhaseName {
   en: string;
@@ -63,7 +62,7 @@ const lunarPhases: ILunarPhases = {
     },
     range: {
       start: 0,
-      end: 1.5,
+      end: LUNAR_BUFFER,
     },
     symbol: "🌑",
     description: {
@@ -85,8 +84,8 @@ const lunarPhases: ILunarPhases = {
       zh: "薄月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: LUNAR_BUFFER,
+      end: 25 - LUNAR_BUFFER,
     },
     symbol: "🌒",
     description: {
@@ -108,8 +107,8 @@ const lunarPhases: ILunarPhases = {
       zh: "初月",
     },
     range: {
-      start: 6.83264721325,
-      end: 7.93264721325,
+      start: 25 - LUNAR_BUFFER,
+      end: 25 + LUNAR_BUFFER,
     },
     symbol: "🌓",
     description: {
@@ -131,8 +130,8 @@ const lunarPhases: ILunarPhases = {
       zh: "薄月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 25 + LUNAR_BUFFER,
+      end: 50 - LUNAR_BUFFER,
     },
     symbol: "🌔",
     description: {
@@ -154,8 +153,8 @@ const lunarPhases: ILunarPhases = {
       zh: "満月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 50 - LUNAR_BUFFER,
+      end: 50 + LUNAR_BUFFER,
     },
     symbol: "🌕",
     description: {
@@ -177,8 +176,8 @@ const lunarPhases: ILunarPhases = {
       zh: "薄月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 50 + LUNAR_BUFFER,
+      end: 75 - LUNAR_BUFFER,
     },
     symbol: "🌖",
     description: {
@@ -200,8 +199,8 @@ const lunarPhases: ILunarPhases = {
       zh: "末月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 75 - LUNAR_BUFFER,
+      end: 75 + LUNAR_BUFFER,
     },
     symbol: "🌗",
     description: {
@@ -223,8 +222,8 @@ const lunarPhases: ILunarPhases = {
       zh: "薄月",
     },
     range: {
-      start: 1.00000001,
-      end: 6.53699,
+      start: 75 + LUNAR_BUFFER,
+      end: 100 - LUNAR_BUFFER,
     },
     symbol: "🌘",
     description: {
@@ -260,8 +259,13 @@ const rareLunarPhases = {
   },
 };
 
-// We start by getting the Julian date, which is a lunar month, time between two identical syzygies, which is around 29.53 days.
-
+/**
+ * We start by getting the Julian date called a "lunar month".
+ * This time between two identical syzygies is around 29.530588853 days.
+ * then using the time at which unix epoch started we can calculate the number of cycles from current date.
+ * @param {Date} date the current or desired date to calculate the lunar phase for
+ * @returns {number} the number of lunar cycles since the unix epoch
+ */
 function getJulianDate(date: Date = new Date()): number {
   const time = date.getTime();
   const tzoffset = date.getTimezoneOffset();
@@ -269,14 +273,19 @@ function getJulianDate(date: Date = new Date()): number {
   return time / 86400000 - tzoffset / 1440 + JULIAN_UNIX_TIME;
 }
 
+/**
+ * This will get the current age in the lunar cycle for a specified date.
+ * @param date the current or desired date to calculate the lunar age for
+ * @returns {number} the age of the lunar cycle passed in days
+ */
 function getLunarAge(date = new Date()): number {
   const percent = getLunarAgePercent(date);
-  const age = percent * LUNAR_MONTH;
+  const age = percent * LUNAR_ORBIT;
   return age;
 }
 
 function getLunarAgePercent(date: Date = new Date()) {
-  return normalize((getJulianDate(date) - JULIAN_DATE) / LUNAR_MONTH);
+  return normalize((getJulianDate(date) - JULIAN_DATE) / LUNAR_ORBIT);
 }
 
 function normalize(value: number): number {
@@ -302,31 +311,46 @@ function normalize(value: number): number {
  * @returns IPhase The lunar phase for the given date.
  */
 function createLunarPhase(date: Date = new Date()): IPhase {
-  const age = getLunarAge(date);
-  if (age < 1) {
+  const percent = getLunarAgePercent(date) * 100;
+  if (
+    percent >= lunarPhases.new.range.start &&
+    percent <= lunarPhases.new.range.end
+  ) {
     return lunarPhases.new;
-  } else if (age < LUNAR_WEEK - LUNAR_BUFFER) {
+  } else if (
+    percent >= lunarPhases.waxingCrescent.range.start &&
+    percent <= lunarPhases.waxingCrescent.range.end
+  ) {
     return lunarPhases.waxingCrescent;
   } else if (
-    age >= LUNAR_WEEK - LUNAR_BUFFER &&
-    age <= LUNAR_WEEK + LUNAR_BUFFER
+    percent >= lunarPhases.firstQuarter.range.start &&
+    percent <= lunarPhases.firstQuarter.range.end
   ) {
     return lunarPhases.firstQuarter;
-  } else if (age < LUNAR_WEEK * 2 - LUNAR_BUFFER) {
+  } else if (
+    percent >= lunarPhases.waxingGibbous.range.start &&
+    percent <= lunarPhases.waxingGibbous.range.end
+  ) {
     return lunarPhases.waxingGibbous;
   } else if (
-    age >= LUNAR_WEEK * 2 - LUNAR_BUFFER &&
-    age <= LUNAR_WEEK * 2 + LUNAR_BUFFER
+    percent >= lunarPhases.full.range.start &&
+    percent <= lunarPhases.full.range.end
   ) {
     return lunarPhases.full;
-  } else if (age < LUNAR_WEEK * 3 - LUNAR_BUFFER) {
+  } else if (
+    percent >= lunarPhases.waningGibbous.range.start &&
+    percent <= lunarPhases.waningGibbous.range.end
+  ) {
     return lunarPhases.waningGibbous;
   } else if (
-    age >= LUNAR_WEEK * 3 - LUNAR_BUFFER &&
-    age <= LUNAR_WEEK * 3 + LUNAR_BUFFER
+    percent >= lunarPhases.lastQuarter.range.start &&
+    percent <= lunarPhases.lastQuarter.range.end
   ) {
     return lunarPhases.lastQuarter;
-  } else if (age < LUNAR_MONTH - LUNAR_BUFFER) {
+  } else if (
+    percent >= lunarPhases.waningCrescent.range.start &&
+    percent <= lunarPhases.waningCrescent.range.end
+  ) {
     return lunarPhases.waningCrescent;
   }
   return lunarPhases.new;

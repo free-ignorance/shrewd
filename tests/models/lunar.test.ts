@@ -7,11 +7,11 @@ import {
 describe('Lunar', () => {
 	describe('getLunarPhase - Phase Test 1', () => {
 		// testing a month from 2021 as a lunar case example
-		const newMoonStartDate = new Date('January 13, 2021 07:24:00');
-		const waxingCrescentDate = new Date('January 16, 2021 07:24:00');
-		const firstQuarterDate = new Date('January 20, 2021 07:24:00');
+		const newMoonStartDate = new Date('May 30, 2022 07:24:00');
+		const waxingCrescentDate = new Date('June 2, 2022 07:24:00');
+		const firstQuarterDate = new Date('June 7, 2022 10:48:00');
 		const waxingGibbousDate = new Date('January 24, 2021 07:24:00');
-		const fullMoonDate = new Date('January 28, 2021 07:24:00');
+		const fullMoonDate = new Date('June 14, 2022 07:51:00');
 		const waningGibbousDate = new Date('January 31, 2021 07:24:00');
 		const lastQuarterDate = new Date('February 4, 2021 15:43:00');
 		const waningCrescentDate = new Date('February 7, 2021 07:24:00');

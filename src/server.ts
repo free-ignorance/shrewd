@@ -1,9 +1,8 @@
-import app from "./app";
-import logger from "./utils/logger";
-const PORT = process.env.PORT || 5000;
+import App from "./app";
 
-app
-  .listen(PORT, () => {
-    logger.info(`app listening at http://${PORT}`);
-  })
-  .on("error", (e) => logger.error(e));
+import HealthCheckController from "./controllers/health";
+import LunarController from "./controllers/lunar";
+
+const app = new App([new HealthCheckController(), new LunarController()]);
+
+app.listen();
