@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "sst": "git+https://github.com/wh-iterabb-it/sst.git",
     "ts-node": "10.8.0",
-    "typescript": "4.6.4",
+    "typescript": "4.7.2",
     "winston": "^3.7.2"
   },
   "devDependencies": {
