@@ -59,6 +59,9 @@ localized into multiple languages, currently supported are:
 
 it also returns an emoji symbol for universal understanding.
 
+### Looking for Translators! 
+
+[Click here](https://github.com/free-ignorance/shrewd/blob/main/docs/CONTRIBUTING.md) to learn more or if you would like to contribute in anyway! 
 
 
 ## Methodology
