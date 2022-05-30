@@ -4,7 +4,7 @@
 
 The following is a set of guidelines for contributing to free-ignorance projects. 
 
-...
+All Inperson and 
 
 
 ### Open Help Wanted Initiatives 
