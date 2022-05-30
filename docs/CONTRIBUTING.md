@@ -5,3 +5,8 @@
 The following is a set of guidelines for contributing to free-ignorance projects. 
 
 ...
+
+
+### Open Help Wanted Initiatives 
+
+* [[I18N] Looking for Help With Translation](https://github.com/free-ignorance/shrewd/issues/15)
