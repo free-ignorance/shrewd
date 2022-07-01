@@ -29,7 +29,7 @@
     "sst": "git+https://github.com/wh-iterabb-it/sst.git",
     "ts-node": "10.8.0",
     "typescript": "4.7.2",
-    "winston": "^3.8.0"
+    "winston": "^3.8.1"
   },
   "devDependencies": {
     "@types/body-parser": "1.19.2",
