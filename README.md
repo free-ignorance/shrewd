@@ -37,7 +37,7 @@ Response
 Recieve the Response in a different language using the `lang` query param.
 
 ```bash
-  curl https://sage.af/api/shrewd/?lang="es"
+  curl https://shrewdly.herokuapp.com/?lang="es"
 ```
 
 Response
