@@ -25,14 +25,17 @@ class LunarController extends DefaultController {
   ) => {
     // no language defaulting to english
     const language = `${request.params.language}`;
-    const date = `${request.params.date}`;
-
+    let date = `${request.params.date}`;
+    if (date === "undefined") {
+      date = new Date();
+    }
+    const lunarPhase = getLunarPhase(date, language);
     response.status(200).send({
       data: {
-        message: `${getLunarPhase(new Date(date), language)}`,
+        message: lunarPhase,
       },
       meta: {
-        date: new Date(date).toISOString(),
+        date: `${date}`,
       },
     });
   };
