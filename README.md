@@ -21,7 +21,7 @@ This RESTful API returns a json object with the current moon phase
 Basic usage
 
 ```bash
-curl https://sage.af/api/shrewd/
+curl https://shrewdly.herokuapp.com/
 ```
 
 Response
