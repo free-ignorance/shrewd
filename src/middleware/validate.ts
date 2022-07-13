@@ -71,14 +71,17 @@ function invalidDateMiddleware(
   if (
     !request.params ||
     !request.params.date ||
-    request.params.date.length === 0
+    request.params.date.length === 0 ||
+    `${request.params.date}` != "undefined"
   ) {
-    request.params.date = "en";
+    // there is no date specified
+    request.params.date = = new Date();
     next();
   }
 
   const date = request.params.date;
   if (!validateDate(date)) {
+    // date is specified, but invalid and can't be parsed
     response
       .status(400)
       .send(`Invalid date! Valid date format is "YYYY-MM-DD"`);
