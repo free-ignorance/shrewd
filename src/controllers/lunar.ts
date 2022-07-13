@@ -8,7 +8,7 @@ import {
 
 class LunarController extends DefaultController {
   constructor() {
-    super("/lunar");
+    super("/");
     this.initializeRoutes();
   }
 
