@@ -45,7 +45,7 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-prettier": "4.0.0",
     "jest": "28.1.0",
-    "nodemon": "2.0.18",
+    "nodemon": "2.0.19",
     "prettier": "2.6.2",
     "ts-jest": "28.0.4"
   }
