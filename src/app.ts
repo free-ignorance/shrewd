@@ -5,7 +5,6 @@ import compression from "compression";
 
 const PORT = process.env.PORT || 5000;
 
-
 interface Controller {
   path: string;
   router: express.Router;
