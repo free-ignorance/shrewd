@@ -24,7 +24,7 @@ class LunarController extends DefaultController {
     response: express.Response
   ) => {
     // no language defaulting to english
-    const language = `${request.params.language}`;
+    const language = `${request.query.language}`;
     const date = new Date();
 
     const lunarPhase = getLunarPhase(date, language);
