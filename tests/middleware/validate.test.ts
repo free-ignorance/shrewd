@@ -130,18 +130,6 @@ describe('/middleware', () => {
 				invalidDateMiddleware(mockRequest as Request, mockResponse as Response, nextFunction as NextFunction);
 				expect(nextFunction).toHaveBeenCalled();
 			});
-			it( 'should call next if date is invalid', () => {
-				mockRequest = {
-					params: {
-						date: '2018-01-32',
-						language: 'en'
-					}
-				};
-
-				invalidDateMiddleware(mockRequest as Request, mockResponse as Response, nextFunction as NextFunction);
-				expect(mockResponse.status).toHaveBeenCalledWith(400);
-				expect(mockResponse.send).toHaveBeenCalledWith('Invalid date! Valid date format is \"YYYY-MM-DD\"');
-			});
 		});
 	});
 });
