@@ -40,13 +40,13 @@ function invalidLanguageMiddleware(
 ) {
   if (
     !request.params ||
-    !request.params.language ||
-    request.params.language.length === 0
+    !request.params.lang ||
+    request.params.lang.length === 0
   ) {
     next();
   }
 
-  if (!validateLanguage(request.params.language)) {
+  if (!validateLanguage(request.params.lang)) {
     response
       .status(400)
       .send(
@@ -75,7 +75,8 @@ function invalidDateMiddleware(
     `${request.params.date}` != "undefined"
   ) {
     // there is no date specified
-    request.params.date = = new Date();
+    const date = new Date();
+    request.params.date = date.toJSON().slice(0, 10);
     next();
   }
 
