@@ -2,6 +2,7 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import helmet from "helmet";
 import compression from "compression";
+import { logger } from "./utils/logger";
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,7 +23,7 @@ class App {
 
   public listen() {
     this.app.listen(PORT, () => {
-      console.log(`App listening on the port ${PORT}`);
+      logger.info(`App listening on the port ${PORT}`);
     });
   }
 

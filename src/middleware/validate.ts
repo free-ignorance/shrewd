@@ -75,7 +75,7 @@ function invalidDateMiddleware(
     `${request.params.date}` != "undefined"
   ) {
     // there is no date specified
-    request.params.date = = new Date();
+    request.params.date = new Date();
     next();
   }
 
