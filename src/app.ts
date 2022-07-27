@@ -2,7 +2,7 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import helmet from "helmet";
 import compression from "compression";
-import { logger } from "./utils/logger";
+import { default as logger } from "./utils/logger";
 
 const PORT = process.env.PORT || 5000;
 
