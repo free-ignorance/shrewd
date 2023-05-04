@@ -6,9 +6,6 @@ shrewd
 
 [![Issues](https://img.shields.io/github/issues/free-ignorance/shrewd.svg)](https://github.com/free-ignorance/shrewd/issues)
 [![License](https://img.shields.io/badge/license-GPL-blue.svg)](https://github.com/free-ignorance/shrewd/blob/main/LICENSE)
-![Known Vulnerabilities](https://snyk.io/test/github/free-ignorance/shrewd/badge.svg)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/free-ignorance/shrewd.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/free-ignorance/shrewd/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/free-ignorance/shrewd.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/free-ignorance/shrewd/context:javascript)
 [![codecov](https://codecov.io/gh/free-ignorance/shrewd/branch/main/graph/badge.svg)](https://codecov.io/gh/free-ignorance/shrewd)
 
 
