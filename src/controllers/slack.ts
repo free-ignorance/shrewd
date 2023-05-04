@@ -13,7 +13,7 @@ class SlackController extends DefaultController {
   }
 
   private initializeRoutes() {
-    this.router.get(this.path, this.getSlackResponseRandom);
+    this.router.all(this.path, this.getSlackResponseRandom);
     this.router
       .all(this.path, invalidDateMiddleware)
       .all(this.path, invalidLanguageMiddleware);
