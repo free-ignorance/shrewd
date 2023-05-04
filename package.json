@@ -18,13 +18,15 @@
     "Beau Bouchard <https://github.com/BeauBouchard>"
   ],
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "serve": "node dist/src/server",
+    "start": "ts-node src/server",
+    "heroku-start": "ts-node src/server",
+    "typings": "src/index",
     "build": "tsc",
-    "build:post": "cp package.json dist/package.json && cd dist && npm install",
-    "start:serve": "node dist/src/server.js",
+    "postbuild": "cp package.json dist/package.json && cd dist && npm install",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage | codecov",
+    "test:coverage": "jest --coverage | ./node_modules/.bin/codecov",
     "test:lint": "eslint . 'src/**/*.ts'",
     "test:lint:fix": "eslint . --fix 'src/**/*.ts'"
   },
