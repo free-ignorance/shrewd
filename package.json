@@ -1,6 +1,9 @@
 {
   "name": "shrewd",
-  "version": "0.4.1",
+  "version": "0.4.2",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "A simple API which gives lunar phase information",
   "repository": {
     "type": "git",
