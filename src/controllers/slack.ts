@@ -31,7 +31,12 @@ class SlackController extends DefaultController {
 
     response.status(200).send({
       response_type: "in_channel",
-      text: lunarPhase,
+      text:
+        lunarPhase.name +
+        "(" +
+        lunarPhase.symbol +
+        ") " +
+        lunarPhase.description,
     });
   };
 }
