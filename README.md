@@ -35,7 +35,9 @@ There are eight main lunar phases:
 * Third Quarter: 🌗 When the Moon is halfway through its orbit back to the new moon, we see half of the Moon illuminated by the Sun. This is called a third quarter moon.
 * Waning Crescent: 🌘 As the Moon gets closer to the new moon, we see less and less of the Moon illuminated by the Sun. This is called a waning crescent moon.
 
-![Moon_Phase_Diagram](https://github.com/free-ignorance/shrewd/assets/127320/3c952736-a6e1-46ab-8663-055fb00601db)
+<div align="center">
+<img src="https://github.com/free-ignorance/shrewd/assets/127320/262c796a-5d00-4570-a218-5a33c17cff34" alt="a Moon phase diagram" />
+</div>
 
 
 To get the Current lunar cycle . . .
