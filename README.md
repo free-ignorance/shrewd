@@ -13,7 +13,12 @@ shrewd
 ## Description
 
 
-This RESTful API returns a json object with the current moon phase
+This RESTful API returns a json object with the current moon phase.
+
+
+![Moon_Phase_Diagram](https://github.com/free-ignorance/shrewd/assets/127320/3c952736-a6e1-46ab-8663-055fb00601db)
+
+
 
 Basic usage
 
